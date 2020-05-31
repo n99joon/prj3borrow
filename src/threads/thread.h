@@ -112,6 +112,10 @@ struct thread
     struct child_process* cp;   // point to child process
     struct file* executable;    // use for denying writes to executables
     struct list lock_list;      // use to keep track of locks the thread holds
+
+	//added in lab3
+	struct list vm; /*linked list to manage virtual address space of thread*/
+
   };
 
 /* If false (default), use round-robin scheduler.

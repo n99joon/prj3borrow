@@ -1,8 +1,11 @@
 #ifndef USERPROG_PROCESS_H
 #define USERPROG_PROCESS_H
 
-#include "threads/thread.h"
+//added in lab3
+#include "vm/page.h"
 
+#include "threads/thread.h"
+bool handle_mm_fault(struct vm_entry *vme);
 tid_t process_execute (const char *file_name);
 int process_wait (tid_t);
 void process_exit (void);

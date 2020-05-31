@@ -1,0 +1,20 @@
+FAIL
+Kernel panic in run: PANIC at ../../userprog/pagedir.c:130 in pagedir_get_page(): assertion `is_user_vaddr (uaddr)' failed.
+Call stack: 0xc00286ec 0xc002b0da 0xc002bfc6 0xc002bff7 0xc002c26a 0xc0021b56 0xc0021c8f 0x804a80b 0x8048132 0x8048231 0x804899c
+Translation of call stack:
+In kernel.o:
+0xc00286ec: debug_panic (.../../lib/kernel/debug.c:38)
+0xc002b0da: pagedir_get_page (...../userprog/pagedir.c:132)
+0xc002bfc6: getpage_ptr (...../userprog/syscall.c:479)
+0xc002bff7: validate_str (...../userprog/syscall.c:459)
+0xc002c26a: syscall_handler (...../userprog/syscall.c:137)
+0xc0021b56: intr_handler (..../threads/interrupt.c:367)
+0xc0021c8f: intr_entry (threads/intr-stubs.S:38)
+In tests/userprog/no-vm/multi-oom:
+0x0804a80b: open (...../lib/user/syscall.c:105)
+0x08048132: consume_some_resources_and_die (...prog/no-vm/multi-oom.c:88)
+0x08048231: main (...rog/no-vm/multi-oom.c:119)
+0x0804899c: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
